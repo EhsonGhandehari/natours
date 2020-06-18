@@ -23,7 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Mounting the routes
+// Mounting the Routes
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 

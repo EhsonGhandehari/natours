@@ -1,8 +1,17 @@
 const Tour = require('./../models/tourModel');
+const APIFeatures = require('./../utils/apiFeatures');
 
 exports.getAllTours = async (req, res) => {
   try {
-    const tours = await Tour.find();
+    // EXECUTE THE QUERY
+    const features = new APIFeatures(Tour.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .pagination();
+    const tours = await features.query;
+    // Send Response
+
     res.status(200).json({
       status: 'success',
       results: tours.length, // the number of tours
@@ -83,4 +92,11 @@ exports.deleteTour = async (req, res) => {
       message: 'Invalid dataset',
     });
   }
+};
+
+exports.aliasTopTours = (req, res, next) => {
+  req.query.limit = '5';
+  req.query.sort = '-ratingsAverage,price';
+  req.query.field = 'name,price,ratingsAverage,difficulty';
+  next();
 };
