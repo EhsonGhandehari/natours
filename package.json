@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js"
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "Ehson M. Ghandehari",
   "license": "ISC",
@@ -14,7 +15,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.19",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "ndb": "^1.1.5",
+    "slugify": "^1.4.0",
+    "validator": "^13.1.1"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
