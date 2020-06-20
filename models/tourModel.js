@@ -4,18 +4,6 @@ const dotenv = require('dotenv');
 const slugify = require('slugify');
 dotenv.config({ path: './config_local.env' });
 
-mongoose
-  .connect(process.env.DATABASE_LOCAL, {
-    // process.env.DATABASE_LOCAL
-    userNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .then((con) => {
-    console.log('DB Connection Successful');
-  });
-
 // Creating a mongodb schema with Mongoose
 const tourSchema = new mongoose.Schema(
   {
